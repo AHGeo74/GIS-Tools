@@ -4,7 +4,7 @@
 
 import arcpy
 from arcpy.sa import *
-import os, math, time, sys, csv
+import csv
 
 ### TEXT INSERTS ###
 
