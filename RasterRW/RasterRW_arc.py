@@ -30,11 +30,25 @@ def raster_loop(raster):
     for x in range(-180, 181, 1):  #-180, 180+1
         for y in range(-90, 91, 1): #-90, 90+1
             point = arcpy.management.GetCellValue(raster, f"{x} {y}")
-            #print(f"{x}, {y}, {point}")
+            print(f"{x}, {y}, {point}")
             with open("output.csv", "a") as fp:
                 writer = csv.writer(fp, delimiter=",")
                 # writer.writerow(["your", "header", "foo"])  # write header
                 writer.writerow((x, y, point))
+
+def raster_loop_2(raster):
+    
+    lst = []
+    
+    for x in range(-180, 181, 1):  #-180, 180+1
+        for y in range(-90, 91, 1): #-90, 90+1
+            point = arcpy.management.GetCellValue(raster, f"{x} {y}")
+            lst.append((x, y, point))
+            print(f"{x}, {y}, {point}")
+        with open("output.csv", "a") as fp:
+            writer = csv.writer(fp, delimiter=",")
+            writer.writerows(lst)
+        lst = []
 
 
 ### MAIN PROGRAM ###
@@ -56,7 +70,7 @@ raster = file_name
 
 #test_raster(raster, x, y)
 
-raster_loop(raster)
+raster_loop_2(raster)
 
 
 
